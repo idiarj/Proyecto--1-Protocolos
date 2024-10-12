@@ -1,0 +1,19 @@
+{
+  "name": "backend-protocols",
+  "version": "1.0.0",
+  "description": "backend donde estas los servidores tcp y udp para el proyecto de protocolos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "protocolos",
+    "tcp",
+    "udp"
+  ],
+  "author": "Idiar Chacin & Victoria Acosta",
+  "license": "ISC",
+  "dependencies": {
+    "net": "^1.0.2"
+  }
+}
