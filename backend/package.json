@@ -14,6 +14,7 @@
   "author": "Idiar Chacin & Victoria Acosta",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.21.1",
     "net": "^1.0.2"
   }
 }
