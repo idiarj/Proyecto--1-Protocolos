@@ -5,3 +5,11 @@ Content-Type: application/json
 {
     "serverType": "TCP"
 }
+
+### send-client-msg
+POST http://localhost:3000/start-client
+Content-Type: application/json
+
+{
+    "msg": "Hello"
+}

@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import { startServer } from '../utils/startServer.js';
+
+import { ProtocolServer } from '../utils/ProtocolServer.js';
+import { ProtocolClient } from '../utils/ProtocolClient.js';
 
 const app = express();
 const PORT = 3000;
@@ -13,15 +15,22 @@ app.use(cors({
     "credentials": true
 }));
 
-app.post('/start-server', (req, res) => {
+app.post('/start-server', async (req, res) => {
     
     const { serverType } = req.body;
     console.log(serverType);
     console.log('entre aqui')
-    startServer({ serverType });
+    await ProtocolServer.start({ serverType });
     res.status(200).json({ message: `server ${serverType} started` });
 
 });
+
+app.post('/stop-server', async (req, res) => {
+
+    res.status(200).json({ message: 'server stopped' });
+});
+
+app.post('/start-client', (req, res) => {});
 
 
 app.listen(PORT, () => {
