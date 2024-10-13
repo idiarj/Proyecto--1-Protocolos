@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { constantsProtocolsINFO } from '../../CONSTANTS/protocolsINFO.js';
 
-export function CardComponent() {
+export function CardComponent({ onProtocolSelect }) {
   const [selectedProtocol, setSelectedProtocol] = useState('');
   const [protocolDescription, setProtocolDescription] = useState('');
 
@@ -11,6 +11,7 @@ export function CardComponent() {
     setSelectedProtocol(selectedValue);
     const selectedProtocolInfo = constantsProtocolsINFO.find(protocol => protocol.protocolName === selectedValue);
     setProtocolDescription(selectedProtocolInfo ? selectedProtocolInfo.description : '');
+    onProtocolSelect(selectedValue);
   };
 
   return (
@@ -38,7 +39,5 @@ export function CardComponent() {
 }
 
 CardComponent.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
+  onProtocolSelect: PropTypes.func.isRequired,
 };
