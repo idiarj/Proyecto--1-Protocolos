@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import { constantsProtocolsINFO } from '../CONSTANTS/protocolsINFO.js';
+import { constantsProtocolsINFO } from '../../CONSTANTS/protocolsINFO.js';
 
 export function CardComponent() {
   const [selectedProtocol, setSelectedProtocol] = useState('');

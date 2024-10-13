@@ -1,8 +1,7 @@
-
-
+import './networkFrameComponent.css';
 export function NetworkFrameComponent(){
     return (
-        <>
+        <section className='network-frame'>
             <div>
             init
             </div>
@@ -13,6 +12,6 @@ export function NetworkFrameComponent(){
             <input type="text" name="" id="" />
             <div>endData</div>
             <div>close</div>
-        </>
+        </section>
     )
 }

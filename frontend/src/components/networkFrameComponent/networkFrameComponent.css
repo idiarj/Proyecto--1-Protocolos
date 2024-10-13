@@ -1,0 +1,15 @@
+.network-frame {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #000000;
+  }
+  
+  .network-frame div,
+  .network-frame select,
+  .network-frame input {
+    margin: 0 0.5rem;
+  }

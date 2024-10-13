@@ -1,11 +1,11 @@
-import { CardComponent } from './components/card.jsx'
-import { NetworkFrameComponent } from './components/networkFrameComponent.jsx'
+import { CardComponent } from './components/cardComponent/cardComponent.jsx'
+import { NetworkFrameComponent } from './components/networkFrameComponent/networkFrameComponent.jsx'
 import './App.css'
 
 function App() {
   return (
     <>
-        <CardComponent/>
+        {/* <CardComponent/> */}
         <NetworkFrameComponent/>
     </>
 
