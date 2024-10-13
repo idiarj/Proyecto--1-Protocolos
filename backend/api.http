@@ -1,1 +1,7 @@
 ### start-server
+POST http://localhost:3000/start-server
+Content-Type: application/json
+
+{
+    "serverType": "TCP"
+}
