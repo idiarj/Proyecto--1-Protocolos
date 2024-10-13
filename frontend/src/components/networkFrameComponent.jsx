@@ -1,6 +1,6 @@
 
 
-export function networkFrameComponent(){
+export function NetworkFrameComponent(){
     return (
         <>
             <div>
