@@ -24,5 +24,3 @@ export function TCPClient(msg){
         console.log(dat.toString());
     });
 }
-
-TCPClient("Hola mundo con TCP");

@@ -20,6 +20,7 @@ Content-Type: application/json
 
 {
     "serverType": "TCP"
+    
 }
 
 ### send-client-msg TCP
@@ -27,7 +28,9 @@ POST http://localhost:3000/start-client
 Content-Type: application/json
 
 {
-    "clientType": "TCP"
+    "clientType": "TCP",
+    "msg": "Hola mundo con TCP",
+    "msgType": "debug"
 }
 
 ###kill-server

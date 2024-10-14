@@ -18,5 +18,3 @@ export function UPDClient(msg){
         }
     })
 }
-
-UPDClient('Hola mundo con UDP')
