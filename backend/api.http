@@ -31,7 +31,7 @@ Content-Type: application/json
 
 {
     "clientType": "TCP",
-    "msg": "Hola mundo con TCP",
+    "msg": "Hola uru con TCP",
     "msgType": "debug"
 }
 

@@ -1,6 +1,6 @@
 import { logInterceptor } from "../utils/loggerModule.js";
 import path from "path";
-import fs from "fs";    
+import { appendToFile } from "../utils/fsModule.js";
 import net from "net";
 import { fileURLToPath } from "url";
 
@@ -17,15 +17,22 @@ export function startTCPServer() {
     tcpServer = net.createServer((sock) => {
         console.log("conectado IP:", sock.remoteAddress, "port:", sock.remotePort);
         sock.on("data", (data) => {
-            console.log("data recibida desde", sock.remoteAddress, '=', data.toString());
-            fs.appendFile(logFilePath, data.toString() + '\n', (err) => {
-                if (err) {
-                    console.error("Error writing to log.txt:", err);
-                } else {
-                    console.log(logFilePath);
-                    console.log("Data written to log.txt");
-                }
-            });
+            const dataStr = data.toString();
+            const dataJson = JSON.parse(dataStr);
+            console.log("data recibida desde", sock.remoteAddress, '=', dataStr);
+            console.log(dataJson)
+
+            const dataToLog = {
+                address: sock.remoteAddress,
+                port: sock.remotePort,
+                protocol: 'TCP',
+                ...dataJson
+            };
+
+            console.log(dataToLog);
+
+
+            appendToFile(logFilePath, dataToLog);
             sock.write("data ok...");
             sock.pipe(sock);
         });

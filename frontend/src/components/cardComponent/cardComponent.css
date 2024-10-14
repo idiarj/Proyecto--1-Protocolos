@@ -1,0 +1,33 @@
+.card-container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    margin: 20px auto;
+    font-family: 'Arial, sans-serif';
+  }
+  
+  .card-container select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .card-container p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .card-container p:first-child {
+    font-weight: bold;
+    color: #007BFF;
+  }
+  
+  .card-container p:last-child {
+    color: #555;
+  }

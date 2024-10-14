@@ -18,7 +18,7 @@ app.use(cors({
 app.post('/start-server', async (req, res) => {
     try {
         const { serverType } = req.body;
-
+        console.log('serverType:', serverType);
         if (!serverType) {
             return res.status(400).json({ message: 'serverType is required' });
         }

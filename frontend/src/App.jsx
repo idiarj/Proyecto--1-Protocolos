@@ -1,21 +1,22 @@
 import { useState } from 'react';
-import { CardComponent } from './components/cardComponent/cardComponent.jsx';
-import { NetworkFrameComponent } from './components/networkFrameComponent/networkFrameComponent.jsx';
 import './App.css';
+import {CardComponent} from './components/cardComponent/cardComponent.jsx';
+import {NetworkFrameComponent} from './components/networkFrameComponent/networkFrameComponent.jsx';
 
-function App() {
-  const [selectedProtocol, setSelectedProtocol] = useState('');
+ function App() {
+    const [showNetworkFrame, setShowNetworkFrame] = useState(false);
 
-  const handleProtocolSelect = (protocol) => {
-    setSelectedProtocol(protocol);
-  };
+    const handleProtocolSelect = (protocol) => {
+        console.log(`Selected protocol: ${protocol}`);
+        setShowNetworkFrame(true);
+    };
 
-  return (
-    <>
-      <CardComponent onProtocolSelect={handleProtocolSelect} />
-      {selectedProtocol && <NetworkFrameComponent />}
-    </>
-  );
+    return (
+        <div className="App">
+            <CardComponent onProtocolSelect={handleProtocolSelect} />
+            {showNetworkFrame && <NetworkFrameComponent />}
+        </div>
+    );
 }
 
 export default App;

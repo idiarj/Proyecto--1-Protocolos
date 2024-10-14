@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import './cardComponent.css';
 import { constantsProtocolsINFO } from '../../CONSTANTS/protocolsINFO.js';
 
-export function CardComponent({ onProtocolSelect }) {
+export const CardComponent = ({ onProtocolSelect }) => {
   const [selectedProtocol, setSelectedProtocol] = useState('');
   const [protocolDescription, setProtocolDescription] = useState('');
+  const [connected, setConnected] = useState(false);
 
   const handleChange = (event) => {
     const selectedValue = event.target.value;
@@ -14,8 +16,43 @@ export function CardComponent({ onProtocolSelect }) {
     onProtocolSelect(selectedValue);
   };
 
+  const handleProtocolConnection = async (protocol) => {
+    try {
+      console.log('Selected Protocol:', protocol);
+      const response = await fetch('http://localhost:3000/start-server', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ serverType: protocol }),
+      });
+      const data = await response.json();
+      if(response.ok){
+        setConnected(true);
+        console.log(connected)
+      }
+      console.log(data);
+    } catch (error) {
+      console.error('error en la peticion http', error);
+    }
+  }
+
+  const handleProtocolDisconnection = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/stop-server', {
+        method: 'POST',
+      });
+      const data = await response.json();
+      if(data.ok){
+        setConnected(false);
+      }
+    } catch (error) {
+      console.error('error en la peticion http', error);
+    }
+  }
+
   return (
-    <div>
+    <div className="card-container">
       <select onChange={handleChange}>
         {constantsProtocolsINFO.map((protocol, index) => (
           <option key={index} value={protocol.protocolName}>
@@ -23,20 +60,24 @@ export function CardComponent({ onProtocolSelect }) {
           </option>
         ))}
       </select>
-      {console.log(selectedProtocol)}
-      <>
-        {selectedProtocol ? (
-          <div>
-            <p>Selected Protocol: {selectedProtocol}</p>
-            <p>Description: {protocolDescription}</p>
-          </div>
-        ) : (
-          <p>Select a protocol</p>
-        )}
-      </>
+      {selectedProtocol && (
+        <div>
+          <p>{selectedProtocol}</p>
+          <p>{protocolDescription}</p>
+          {connected ? (
+            <button onClick={handleProtocolDisconnection}>
+              Desconectarse de {selectedProtocol}
+            </button>
+          ) : (
+            <button onClick={() => handleProtocolConnection(selectedProtocol)}>
+              Conectarse con {selectedProtocol}
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
-}
+};
 
 CardComponent.propTypes = {
   onProtocolSelect: PropTypes.func.isRequired,
