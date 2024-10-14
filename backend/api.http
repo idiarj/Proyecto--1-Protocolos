@@ -1,4 +1,4 @@
-### start-server
+### start-server UDP
 POST http://localhost:3000/start-server
 Content-Type: application/json
 
@@ -6,12 +6,28 @@ Content-Type: application/json
     "serverType": "UDP"
 }
 
-### send-client-msg
+### send-client-msg UDP
 POST http://localhost:3000/start-client
 Content-Type: application/json
 
 {
     "clientType": "UDP"
+}
+
+### start-server TCP
+POST http://localhost:3000/start-server
+Content-Type: application/json
+
+{
+    "serverType": "TCP"
+}
+
+### send-client-msg TCP
+POST http://localhost:3000/start-client
+Content-Type: application/json
+
+{
+    "clientType": "TCP"
 }
 
 ###kill-server

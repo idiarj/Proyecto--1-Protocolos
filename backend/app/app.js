@@ -37,8 +37,12 @@ app.post('/start-server', async (req, res) => {
 });
 
 app.post('/stop-server', async (req, res) => {
-    await ProtocolServer.kill();
-    res.status(200).json({ message: 'server stopped' });
+    try {
+        await ProtocolServer.kill();
+        res.status(200).json({ message: 'server stopped' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error al detener el servidor del protocolo', error: error.message });
+    }
 });
 
 app.post('/start-client', async (req, res) => {

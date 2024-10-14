@@ -25,4 +25,4 @@ export function TCPClient(msg){
     });
 }
 
-TCPClient("Hola mundo");
+TCPClient("Hola mundo con TCP");
