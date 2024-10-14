@@ -27,13 +27,13 @@ export class ProtocolServer {
     }
 
     static async kill() {
-        if (ProtocolServer.serverProcess) {
-            ProtocolServer.serverProcess.kill();
-            ProtocolServer.serverProcess = null;
-            console.log('Server process killed');
-        } else {
-            console.log('No server process to kill');
-        }
+        // if (ProtocolServer.serverProcess) {
+        //     ProtocolServer.serverProcess.kill();
+        //     ProtocolServer.serverProcess = null;
+        //     console.log('Server process killed');
+        // } else {
+        //     console.log('No server process to kill');
+        // }
 
         stopTCPServer();
         stopUDPServer();

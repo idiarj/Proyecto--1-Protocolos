@@ -10,36 +10,27 @@ export class ProtocolClient {
         this.clientType = clientType;
     }
 
-    static async start({ clientType }) {
-        let command = '';
+    static async start({ clientType, msg, msgType }) {
         switch (clientType) {
             case 'UDP':
-                UPDClient({msg: 'mensaje', msgType: 'information'});
+                UPDClient({msg, msgType});
                 break;
             case 'TCP':
-                command = 'node clients/TCPClient.js';
+                TCPClient({msg, msgType});
                 break;
             default:
                 console.log('Invalid client type');
                 return;
         }
-        try {
-            const { stdout, stderr } = await execAsync(command);
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-            console.log(`comando ejecutado: ${command}`);
-        } catch (error) {
-            console.error(`exec error: ${error}`);
-        }
     }
 
-    static async kill() {
-        try {
-            const { stdout, stderr } = await execAsync('killall node');
-            console.log(`stdout: ${stdout}`);
-            console.error(`stderr: ${stderr}`);
-        } catch (error) {
-            console.error(`exec error: ${error}`);
-        }
-    }
+    // static async kill() {
+    //     try {
+    //         const { stdout, stderr } = await execAsync('killall node');
+    //         console.log(`stdout: ${stdout}`);
+    //         console.error(`stderr: ${stderr}`);
+    //     } catch (error) {
+    //         console.error(`exec error: ${error}`);
+    //     }
+    // }
 }
