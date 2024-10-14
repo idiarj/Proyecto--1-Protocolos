@@ -16,21 +16,40 @@ app.use(cors({
 }));
 
 app.post('/start-server', async (req, res) => {
-    
-    const { serverType } = req.body;
-    console.log(serverType);
-    console.log('entre aqui')
-    await ProtocolServer.start({ serverType });
-    res.status(200).json({ message: `server ${serverType} started` });
+    try {
+        const { serverType } = req.body;
 
+        if (!serverType) {
+            return res.status(400).json({ message: 'serverType is required' });
+        }
+
+        if (!['TCP', 'UDP'].includes(serverType)) {
+            return res.status(400).json({ message: 'Invalid serverType' });
+        }
+
+        console.log(`Starting server of type: ${serverType}`);
+        await ProtocolServer.start({ serverType });
+        res.status(200).json({ message: `Server ${serverType} started` });
+    } catch (e) {
+        console.error(`Error starting server: ${e.message}`);
+        res.status(500).json({ message: 'Error al ejecutar el servidor del protocolo', error: e.message });
+    }
 });
 
 app.post('/stop-server', async (req, res) => {
-
+    await ProtocolServer.kill();
     res.status(200).json({ message: 'server stopped' });
 });
 
-app.post('/start-client', (req, res) => {});
+app.post('/start-client', async (req, res) => {
+    try {
+        const { clientType, data } = req.body;
+        await ProtocolClient.start({ clientType});
+        res.status(200).json({ message: `the ${clientType} client was started` }); 
+    } catch (error) {
+        res.status(500).json({ message: 'Error al ejecutar el cliente del protocolo', error: error.message });
+    }
+});
 
 
 app.listen(PORT, () => {

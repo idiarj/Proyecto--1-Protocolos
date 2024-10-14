@@ -11,5 +11,8 @@ POST http://localhost:3000/start-client
 Content-Type: application/json
 
 {
-    "msg": "Hello"
+    "clientType": "TCP"
 }
+
+###kill-server
+POST http://localhost:3000/stop-server

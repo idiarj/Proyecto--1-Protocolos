@@ -19,9 +19,10 @@ export class ProtocolServer {
                 break;
             default:
                 console.log('Invalid server type');
-                return;
         }
+        console.log(command);
         try {
+            console.log(command)
             const { stdout, stderr } = await execAsync(command);
             console.log(`stdout: ${stdout}`);
             console.error(`stderr: ${stderr}`);
