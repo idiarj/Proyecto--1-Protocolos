@@ -1,0 +1,21 @@
+Mensaje recibido desde la ip: 127.0.0.1
+        y el puerto: 62877,
+        utilizando el protocolo: UDP
+        Contenido del mensaje: asdasd
+        Tipo de mensaje: UDP
+        Fecha y hora de recepción: 10/14/2024, 3:41:26 AM
+        
+Mensaje recibido desde la ip: 127.0.0.1
+        y el puerto: 52628,
+        utilizando el protocolo: UDP
+        Contenido del mensaje: sadsad
+        Tipo de mensaje: UDP
+        Fecha y hora de recepción: 10/14/2024, 3:42:51 AM
+        
+Mensaje recibido desde la ip: 127.0.0.1
+        y el puerto: 52618,
+        utilizando el protocolo: TCP
+        Contenido del mensaje: sadsad
+        Tipo de mensaje: TCP
+        Fecha y hora de recepción: 10/14/2024, 3:43:29 AM
+        

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import './networkFrameComponent.css';
 import { frameOptions } from '../../CONSTANTS/protocolsINFO.js';
 
-export function NetworkFrameComponent() {
+// eslint-disable-next-line react/prop-types
+export function NetworkFrameComponent({protocol}) {
     const [selectedOption, setSelectedOption] = useState('');
     const [inputValue, setInputValue] = useState('');
     const [hoveredDescription, setHoveredDescription] = useState('');
@@ -23,9 +24,27 @@ export function NetworkFrameComponent() {
         setHoveredDescription('');
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log()
+        try {
+            const response = await fetch('http://localhost:3000/start-client', {
+                method: 'POST',
+                headers:
+                {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ clientType: protocol, msg: inputValue, msgType: selectedOption }),
+            })
+            if (response.ok) {
+                console.log('Client started');
+            }
+            const data = await response.json();
+            console.log(data)
+        } catch (error) {
+            console.error('error en la peticion http', error);
+            
+        }
+        console.log(protocol);
         console.log('Selected Option:', selectedOption);
         console.log('Input Value:', inputValue);
     };

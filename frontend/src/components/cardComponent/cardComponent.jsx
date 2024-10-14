@@ -43,9 +43,11 @@ export const CardComponent = ({ onProtocolSelect }) => {
         method: 'POST',
       });
       const data = await response.json();
-      if(data.ok){
+      if(response.ok){
         setConnected(false);
+        console.log('desconectado del servidor del protocolo', selectedProtocol);
       }
+      console.log(data);
     } catch (error) {
       console.error('error en la peticion http', error);
     }
