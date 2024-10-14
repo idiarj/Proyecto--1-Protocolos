@@ -44,7 +44,7 @@ app.post('/stop-server', async (req, res) => {
 app.post('/start-client', async (req, res) => {
     try {
         const { clientType, data } = req.body;
-        await ProtocolClient.start({ clientType});
+        await ProtocolClient.start({clientType});
         res.status(200).json({ message: `the ${clientType} client was started` }); 
     } catch (error) {
         res.status(500).json({ message: 'Error al ejecutar el cliente del protocolo', error: error.message });

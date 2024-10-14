@@ -3,7 +3,7 @@ import dgram from 'dgram'
 
 export function UPDClient(msg){
     let client = dgram.createSocket('udp4')
-    var data = Buffer.from('siddheshrane')
+    var data = Buffer.from(msg)
 
     client.on('message', (msg, info)=>{
         console.log('data recibida del server:' + msg.toString());
@@ -18,3 +18,5 @@ export function UPDClient(msg){
         }
     })
 }
+
+UPDClient('Hola mundo con UDP')
