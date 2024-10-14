@@ -11,7 +11,9 @@ POST http://localhost:3000/start-client
 Content-Type: application/json
 
 {
-    "clientType": "UDP"
+    "clientType": "UDP",
+    "msg": "Hola mundo con UDP",
+    "msgType": "debug"
 }
 
 ### start-server TCP

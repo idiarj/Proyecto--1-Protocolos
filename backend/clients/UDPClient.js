@@ -1,7 +1,7 @@
 import {Buffer} from 'buffer';
 import dgram from 'dgram'
 
-export function UPDClient(msg){
+export function UPDClient({msg, msgType}) {
     let client = dgram.createSocket('udp4')
     var data = Buffer.from(msg)
 

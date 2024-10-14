@@ -3,6 +3,9 @@ import dgram from 'dgram';
 import fs from 'fs';
 import path from "path";
 import { fileURLToPath } from "url";
+import { appendToFile } from "../utils/fsModule.js";
+
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -16,14 +19,7 @@ export function startUDPServer() {
     udpServer.on('message', (msg, rinfo) => {
         console.log(`udpServer got: ${msg.toString()} from ${rinfo.address}:${rinfo.port}`);
 
-        fs.appendFile(logFilePath, msg.toString() + '\n', (err) => {
-            if (err) {
-                console.error("Error writing to log.txt:", err);
-            } else {
-                console.log(logFilePath);
-                console.log("Data written to log.txt");
-            }
-        });
+      // appendToFile(logFilePath, `udpServer got: ${msg.toString()} from ${rinfo.address}:${rinfo.port}`)
 
         udpServer.send('mensaje ok', rinfo.port, rinfo.address, (err) => {
             if (err) {

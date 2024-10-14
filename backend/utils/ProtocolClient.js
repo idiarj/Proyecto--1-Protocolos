@@ -1,7 +1,7 @@
 import { exec } from "child_process";
 import { promisify } from "util";
 import { TCPClient } from "../clients/TCPClient.js";
-import { UDPClient } from "../clients/UDPClient.js";
+import { UPDClient } from "../clients/UDPClient.js";
 
 const execAsync = promisify(exec);
 
@@ -14,7 +14,7 @@ export class ProtocolClient {
         let command = '';
         switch (clientType) {
             case 'UDP':
-                
+                UPDClient({msg: 'mensaje', msgType: 'information'});
                 break;
             case 'TCP':
                 command = 'node clients/TCPClient.js';
